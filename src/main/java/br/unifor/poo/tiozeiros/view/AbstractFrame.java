@@ -15,23 +15,23 @@ public class AbstractFrame extends JFrame {
     * Mensagens padrão de informação, alerta e erro
     * que todas telas poderão ter
     * */
-    public void msgInfo(String msg) {
+
+    public void msgAlerts(String tipo, String msg){
         messages.setText(msg);
-        messages.setForeground(Color.BLUE);
+        switch(tipo){
+            case "info":
+                messages.setForeground(Color.BLUE);
+                break;
+            case "alerta":
+                messages.setForeground(Color.YELLOW);
+                break;
+            case "erro":
+                messages.setForeground(Color.RED);
+                break;
+        }
         repaint();
     }
 
-    public void msgWarn(String msg){
-        messages.setText(msg);
-        messages.setForeground(Color.YELLOW);
-        repaint();
-    }
-
-    public void msgError(String msg){
-        messages.setText(msg);
-        messages.setForeground(Color.RED);
-        repaint();
-    }
 
     public AbstractFrame(){
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

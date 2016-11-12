@@ -3,6 +3,7 @@ package br.unifor.poo.tiozeiros;
 import br.unifor.poo.tiozeiros.entity.Equipe;
 import br.unifor.poo.tiozeiros.entity.Jogador;
 import br.unifor.poo.tiozeiros.entity.Partida;
+import br.unifor.poo.tiozeiros.view.LoginFrame;
 
 import java.util.Scanner;
 import java.util.Timer;
@@ -15,11 +16,8 @@ import java.util.concurrent.ThreadFactory;
 public class App {
 
     public static void main(String[] args) {
-        Partida partida = new Partida();
-
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Tempo em minutos");
-        partida.iniciarPartida(scan.nextInt());
+        LoginFrame frame = new LoginFrame();
+        frame.createFrame();
 
     }
 }

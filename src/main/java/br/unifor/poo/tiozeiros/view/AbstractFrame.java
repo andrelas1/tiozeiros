@@ -50,6 +50,7 @@ public class AbstractFrame extends JFrame {
 
     public void mostrarTela(JFrame frame) {
         try {
+            frame.setSize(600, 400);
             UIManager.setLookAndFeel(
                     "com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
             frame.setLocationRelativeTo(null);
@@ -58,16 +59,6 @@ public class AbstractFrame extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /*
-    *Tela de login do usuário
-    */
-
-    public AbstractFrame login() {
-        LoginFrame frame = new LoginFrame();
-        mostrarTela(frame);
-        return frame;
     }
 
     /*

@@ -1,5 +1,7 @@
 package br.unifor.poo.tiozeiros.view;
 
+import sun.rmi.runtime.Log;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -15,8 +17,9 @@ public class LoginFrame extends AbstractFrame {
     private JButton btnCadastrarManager;
 
     public void createFrame() {
+        LoginFrame loginFrame = new LoginFrame();
         setTitle("Tiozeiros Futebol Clube");
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/logo-tiozeiros.png")));
+        /*setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/unifor.gif")));*/
         setBounds(100, 100, 577, 349);
         contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
@@ -32,9 +35,15 @@ public class LoginFrame extends AbstractFrame {
         contentPane.add(txtLogin);
         txtLogin.setColumns(10);
 
-        JLabel lblLogin = new JLabel("Login");
-        lblLogin.setBounds(342, 135, 46, 14);
+        JLabel lblLogin = new JLabel("Login:");
+        lblLogin.setFont(lblLogin.getFont().deriveFont(11.0f));
+        lblLogin.setBounds(342, 104, 46, 14);
         contentPane.add(lblLogin);
+
+        JLabel lblSenha = new JLabel("Senha:");
+        lblSenha.setBounds(342, 135, 46, 14);
+        lblSenha.setFont(lblSenha.getFont().deriveFont(11.0f));
+        contentPane.add(lblSenha);
 
         pwField = new JPasswordField();
         pwField.setBounds(398, 132, 153, 20);
@@ -43,19 +52,22 @@ public class LoginFrame extends AbstractFrame {
         JButton btnEntrar = new JButton("Entrar");
         //setar ActionListener
         btnEntrar.setBounds(352, 169, 76, 23);
+        btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));
         contentPane.add(btnEntrar);
 
-        lblNewLabel = new JLabel("");
- //       lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("imagens/tiozeiros.gif"))); //Imagen inicial da aplicação
+        /*lblNewLabel = new JLabel("");
+        lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("imagens/unifor.gif"))); //Imagen inicial da aplicação
         lblNewLabel.setBounds(10, 29, 336, 257);
-        contentPane.add(lblNewLabel);
+        contentPane.add(lblNewLabel);*/
 
         btnCadastrarManager = new JButton("Cadastrar-se");
         //setar ActionListener
         btnCadastrarManager.setBounds(438, 169, 101, 23);
+        btnCadastrarManager.setFont(btnCadastrarManager.getFont().deriveFont(11.0f));
         contentPane.add(btnCadastrarManager);
+        loginFrame.add(contentPane);
 
-        login();
+        mostrarTela(loginFrame);
 
     }
 

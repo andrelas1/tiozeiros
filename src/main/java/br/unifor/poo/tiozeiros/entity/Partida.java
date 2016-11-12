@@ -13,24 +13,38 @@ public class Partida {
     private Timer tempo;
     private Date data;
 
+    public Partida(Equipe equipe1, Equipe equipe2, Timer tempo){
+        this.equipe1 = equipe1;
+        this.equipe2 = equipe2;
+        this.tempo = tempo;
+    }
+
+    public Partida(){
+
+    }
+
+    public void iniciarPartida(Integer tempoMinutos){
+        int time = tempoMinutos*60;
+        do{
+            int minutes = time / 60;
+            int seconds = time % 60;
+            System.out.println(minutes + ":" + seconds);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            time = time - 1;
+        }while(time!=0);
+        System.out.println("Time's up");
+    }
+
     public void setData(Date data) {
         this.data = data;
     }
 
-    public void setEquipe1(Equipe equipe1) {
-        this.equipe1 = equipe1;
-    }
-
-    public void setEquipe2(Equipe equipe2) {
-        this.equipe2 = equipe2;
-    }
-
     public void setResultado(String resultado) {
         this.resultado = resultado;
-    }
-
-    public void setTempo(Timer tempo) {
-        this.tempo = tempo;
     }
 
     public Equipe getEquipe1() {

@@ -5,6 +5,8 @@ import sun.rmi.runtime.Log;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 /**
  * Created by andre on 12/11/16.
@@ -55,8 +57,13 @@ public class LoginFrame extends AbstractFrame {
         btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));
         contentPane.add(btnEntrar);
 
+        ImageIcon img = new ImageIcon("br/unifor/poo/tiozeiros/view/imagens/tiozeiros.jpeg");
+        JLabel lblImagem = new JLabel("Image test", img, JLabel.CENTER);
+        lblImagem.setBounds(10, 29, 336, 257);
+        contentPane.add(lblImagem);
+
         /*lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("imagens/unifor.gif"))); //Imagen inicial da aplicação
+        lblNewLabel.setIcon(new ImageIcon(LoginFrame.class.getResource("imagens/tiozeiros.jpeg"))); //Imagen inicial da aplicação
         lblNewLabel.setBounds(10, 29, 336, 257);
         contentPane.add(lblNewLabel);*/
 

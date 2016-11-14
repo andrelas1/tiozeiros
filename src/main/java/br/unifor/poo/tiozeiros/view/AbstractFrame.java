@@ -51,8 +51,7 @@ public class AbstractFrame extends JFrame {
     public void mostrarTela(JFrame frame) {
         try {
             frame.setSize(600, 400);
-            UIManager.setLookAndFeel(
-                    "com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             dispose();

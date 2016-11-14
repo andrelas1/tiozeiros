@@ -1,12 +1,8 @@
 package br.unifor.poo.tiozeiros.view;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by andre on 12/11/16.
@@ -74,10 +70,11 @@ public class LoginFrame extends AbstractFrame {
         labelImg.setBounds(10, 29, 336, 257);
         contentPane.add(labelImg);*/
 
-       /* lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon(getClass().getResource("br/unifor/poo/tiozeiros/view/unifor.gif"))); //Imagem inicial da aplicação
+        lblNewLabel = new JLabel("");
+        ClassLoader a = getClass().getClassLoader();
+        lblNewLabel.setIcon(new ImageIcon(a.getResource("unifor.gif"))); //Imagem inicial da aplicação
         lblNewLabel.setBounds(10, 29, 336, 257);
-        contentPane.add(lblNewLabel);*/
+        contentPane.add(lblNewLabel);
 
         btnCadastrarManager = new JButton("Cadastrar-se");
         //setar ActionListener

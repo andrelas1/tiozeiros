@@ -20,8 +20,8 @@ public class App {
         frame.createFrame();
 */
         /*HomeFrame frame = new HomeFrame();*/
-        JogadoresFrame frame = new JogadoresFrame();
-        /*EquipeFrame frame = new EquipeFrame();*/
+        /*JogadoresFrame frame = new JogadoresFrame();*/
+        EquipeFrame frame = new EquipeFrame();
         /*JogadoresCadastrados frame = new JogadoresCadastrados();*/
         frame.createFrame();
     }

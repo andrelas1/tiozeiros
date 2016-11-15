@@ -20,7 +20,7 @@ public class LoginFrame extends AbstractFrame {
         /*setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/unifor.gif")));*/
         setBounds(100, 100, 577, 349);
         contentPane = new JPanel();
-        contentPane.setBackground(new Color(7, 189, 62));
+        contentPane.setBackground(backgroundColor);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);

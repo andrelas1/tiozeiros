@@ -12,6 +12,10 @@ public class AbstractFrame extends JFrame {
 
     protected JLabel messages;
 
+    protected static final Integer MAX_WIDTH = 640;
+    protected static final Integer MAX_HEIGHT = 480;
+    protected Color backgroundColor = new Color(7, 189, 62);
+
     /*
     * Mensagens padrão de informação, alerta e erro
     * que todas telas poderão ter
@@ -50,7 +54,7 @@ public class AbstractFrame extends JFrame {
 
     public void mostrarTela(JFrame frame) {
         try {
-            frame.setSize(640, 480);
+            frame.setSize(MAX_WIDTH, MAX_HEIGHT);
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);

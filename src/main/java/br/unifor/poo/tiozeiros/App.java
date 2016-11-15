@@ -4,6 +4,7 @@ import br.unifor.poo.tiozeiros.entity.Equipe;
 import br.unifor.poo.tiozeiros.entity.Jogador;
 import br.unifor.poo.tiozeiros.entity.Partida;
 import br.unifor.poo.tiozeiros.view.HomeFrame;
+import br.unifor.poo.tiozeiros.view.JogadoresFrame;
 import br.unifor.poo.tiozeiros.view.LoginFrame;
 
 import java.util.Scanner;
@@ -20,7 +21,8 @@ public class App {
         /*LoginFrame frame = new LoginFrame();
         frame.createFrame();
 */
-        HomeFrame frame = new HomeFrame();
+        /*HomeFrame frame = new HomeFrame();*/
+        JogadoresFrame frame = new JogadoresFrame();
         frame.createFrame();
     }
 }

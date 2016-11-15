@@ -19,18 +19,8 @@ public class HomeFrame extends AbstractFrame {
         /**************************************
          JANELA CONTAINER
          ***************************************/
-
         HomeFrame frame = new HomeFrame();
-        setTitle("Tiozeiros Futebol Clube");
-        setBounds(100, 100, 577, 349);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setBackground(backgroundColor);
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        messages = new JLabel("");
-        messages.setBounds(10, 45, MAX_WIDTH, 14);
-        contentPane.add(messages);
+        contentPane = gerarContentPane();
 
 
         /**************************************

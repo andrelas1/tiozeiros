@@ -1,6 +1,7 @@
 package br.unifor.poo.tiozeiros.view;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.Spliterators;
@@ -62,6 +63,22 @@ public class AbstractFrame extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected JPanel gerarContentPane(){
+
+        JPanel contentPane = new JPanel();
+        setTitle("Tiozeiros Futebol Clube");
+        setBounds(100, 100, 577, 349);
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setBackground(backgroundColor);
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        messages = new JLabel("");
+        messages.setBounds(10, 45, MAX_WIDTH, 14);
+        contentPane.add(messages);
+
+        return contentPane;
     }
 
     /*

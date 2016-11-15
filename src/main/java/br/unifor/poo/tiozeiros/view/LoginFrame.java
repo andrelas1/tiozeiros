@@ -15,18 +15,19 @@ public class LoginFrame extends AbstractFrame {
     private JButton btnCadastrarManager;
 
     public void createFrame() {
+
+        /**************************************
+         JANELA CONTAINER
+         ***************************************/
+
         LoginFrame loginFrame = new LoginFrame();
         setTitle("Tiozeiros Futebol Clube");
         /*setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/unifor.gif")));*/
-        setBounds(100, 100, 577, 349);
-        contentPane = new JPanel();
-        contentPane.setBackground(backgroundColor);
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        messages = new JLabel("");
-        messages.setBounds(10, 15, 269, 14);
-        contentPane.add(messages);
+        contentPane = gerarContentPane();
+
+        /**************************************
+         CAMPOS DE LOGIN E SENHA
+         ***************************************/
 
         txtLogin = new JTextField();
         txtLogin.setBounds(398, 101, 153, 20);
@@ -47,6 +48,10 @@ public class LoginFrame extends AbstractFrame {
         pwField.setBounds(398, 132, 153, 20);
         contentPane.add(pwField);
 
+        /**************************************
+         ENTRAR E IMAGEM DE INÍCIO
+         ***************************************/
+
         JButton btnEntrar = new JButton("Entrar");
         //setar ActionListener
         btnEntrar.setBounds(352, 169, 76, 23);
@@ -58,6 +63,10 @@ public class LoginFrame extends AbstractFrame {
         lblNewLabel.setIcon(new ImageIcon(a.getResource("images/tiozeiros.jpeg"))); //Imagem inicial da aplicação
         lblNewLabel.setBounds(10, 29, 336, 257);
         contentPane.add(lblNewLabel);
+
+        /**************************************
+         BOTÃO DE CADASTRAR
+         ***************************************/
 
         btnCadastrarManager = new JButton("Cadastrar-se");
         //setar ActionListener

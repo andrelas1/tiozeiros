@@ -24,15 +24,22 @@ public class EquipeFrame extends AbstractFrame {
 
         JLabel lblTitulo = new JLabel("Equipes");
         lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
-        lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 0, 120, 60);
+        lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
         contentPane.add(lblTitulo);
+
+        /**************************************
+         BARRA DE MENU
+         ***************************************/
+
+        contentPane.add(gerarMenuBar());
+
 
         /**************************************
          TELA DE EQUIPES: MÁXIMO QUATRO EQUIPES
          ***************************************/
 
         EquipesGeradas equipes = new EquipesGeradas();
-        equipes.setBounds(80, (int) lblTitulo.getBounds().getY()+60, 480, 360);
+        equipes.setBounds(80, (int) lblTitulo.getBounds().getY()+60, 480, 320);
         contentPane.add(equipes);
 
         frame.add(contentPane);
@@ -49,7 +56,7 @@ class EquipesGeradas extends JPanel {
 
     public EquipesGeradas() {
         setLayout(new GridLayout(2, 2));
-        setSize(480, 360);
+        setSize(480, 320);
         gerarEquipes(3);
     }
 
@@ -57,7 +64,7 @@ class EquipesGeradas extends JPanel {
         for (int c = 0; c < n; c++) {
             JPanel equipe = new JPanel();
             equipe.setLayout(new GridLayout(5, 1));
-            equipe.setSize(120, 90);
+            equipe.setSize(120, 80);
             JLabel lblNomeEquipe = new JLabel("Equipe " + (c + 1));
             lblNomeEquipe.setFont(new Font("Serif", Font.BOLD, 14));
             lblNomeEquipe.setHorizontalAlignment(JLabel.CENTER);

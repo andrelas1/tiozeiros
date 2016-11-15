@@ -85,6 +85,35 @@ public class AbstractFrame extends JFrame {
         return contentPane;
     }
 
+    public JMenuBar gerarMenuBar(){
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setBounds(0, 0, 640, 28);
+
+        JMenu mnEquipes = new JMenu("Equipe");
+        menuBar.add(mnEquipes);
+        JMenuItem mtmEscolherEquipes = new JMenuItem("Escolher Equipes");
+        /*
+        Inserir ActionListener para escolha de equipes
+        */
+        mnEquipes.add(mtmEscolherEquipes);
+        JMenu mnJogador = new JMenu("Jogador");
+        menuBar.add(mnJogador);
+        JMenuItem mtmCadastrarJogador = new JMenuItem("Cadastrar Jogador");
+        /*
+        Inserir ActionListener para cadastro de jogador
+        */
+        mnJogador.add(mtmCadastrarJogador);
+        JMenu mnHistorico = new JMenu("Histórico");
+        menuBar.add(mnHistorico);
+        JMenuItem mtmVisualizarHistórico = new JMenuItem("Visualizar Histórico");
+        /*
+        Inserir ActionListener para visualizar histórico
+        */
+        mnHistorico.add(mtmVisualizarHistórico);
+
+        return menuBar;
+    }
+
     /*
     *Tela de início da aplicação
     * funcionalidades na tela: iniciar partida, registrar gol, terminar partida.

@@ -27,6 +27,12 @@ public class JogadoresFrame extends AbstractFrame {
         contentPane.add(lblTitulo);
 
         /**************************************
+         BARRA DE MENU
+         ***************************************/
+
+        contentPane.add(gerarMenuBar());
+
+        /**************************************
          DADOS PESSOAIS
          ***************************************/
 

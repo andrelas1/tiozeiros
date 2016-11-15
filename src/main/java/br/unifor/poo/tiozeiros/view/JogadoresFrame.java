@@ -10,10 +10,7 @@ import java.util.ArrayList;
 public class JogadoresFrame extends AbstractFrame {
 
     private JPanel contentPane;
-    private Font titleFont = new Font("Serif", Font.BOLD, 14);
-    private Font paragraphFont = new Font("Serif", Font.PLAIN, 12);
-    private int x = (MAX_WIDTH - 380) / 2;
-    private int y = (MAX_HEIGHT - 150) / 2;
+
 
     public void createFrame() {
 
@@ -36,10 +33,10 @@ public class JogadoresFrame extends AbstractFrame {
 
         JLabel lblNome = new JLabel("Nome");
         lblNome.setFont(titleFont);
-        lblNome.setBounds(x, y - 80, 100, 28);
+        lblNome.setBounds(x, y, 100, 28);
         JLabel lblTelefone = new JLabel("Telefone");
         lblTelefone.setFont(titleFont);
-        lblTelefone.setBounds(x, y - 40, 100, 28);
+        lblTelefone.setBounds(x, y+40, 100, 28);
         contentPane.add(lblNome);
         contentPane.add(lblTelefone);
 

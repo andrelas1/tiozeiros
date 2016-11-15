@@ -16,6 +16,10 @@ public class AbstractFrame extends JFrame {
     protected static final Integer MAX_WIDTH = 640;
     protected static final Integer MAX_HEIGHT = 480;
     protected Color backgroundColor = new Color(7, 189, 62);
+    protected Font titleFont = new Font("Serif", Font.BOLD, 14);
+    protected Font paragraphFont = new Font("Serif", Font.PLAIN, 12);
+    protected int x = (MAX_WIDTH - 380) / 2;
+    protected int y = ((MAX_HEIGHT - 150) / 2)-80;
 
     /*
     * Mensagens padrão de informação, alerta e erro

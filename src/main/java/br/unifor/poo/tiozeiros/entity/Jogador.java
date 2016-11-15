@@ -25,10 +25,6 @@ public class Jogador {
 
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void setPasse(Double passe) {
         if (passe >= 0.0 && passe <= 10.0) {
             this.passe = passe;
@@ -40,6 +36,10 @@ public class Jogador {
         if (passe >= 0.0 && passe <= 10.0) {
             this.velocidade = velocidade;
         }
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public Double getChute() {

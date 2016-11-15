@@ -3,6 +3,7 @@ package br.unifor.poo.tiozeiros;
 import br.unifor.poo.tiozeiros.entity.Equipe;
 import br.unifor.poo.tiozeiros.entity.Jogador;
 import br.unifor.poo.tiozeiros.entity.Partida;
+import br.unifor.poo.tiozeiros.view.HomeFrame;
 import br.unifor.poo.tiozeiros.view.LoginFrame;
 
 import java.util.Scanner;
@@ -16,8 +17,10 @@ import java.util.concurrent.ThreadFactory;
 public class App {
 
     public static void main(String[] args) {
-        LoginFrame frame = new LoginFrame();
+        /*LoginFrame frame = new LoginFrame();
         frame.createFrame();
-
+*/
+        HomeFrame frame = new HomeFrame();
+        frame.createFrame();
     }
 }

@@ -20,7 +20,7 @@ public class LoginFrame extends AbstractFrame {
         /*setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/unifor.gif")));*/
         setBounds(100, 100, 577, 349);
         contentPane = new JPanel();
-        contentPane.setBackground(Color.WHITE);
+        contentPane.setBackground(new Color(7, 189, 62));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -53,26 +53,9 @@ public class LoginFrame extends AbstractFrame {
         btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));
         contentPane.add(btnEntrar);
 
-       /* BufferedImage image = null;
-
-        try {
-            image = ImageIO.read(new File("br/unifor/poo/tiozeiros/view/unifor.gif"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-
-        ImageIcon img = new ImageIcon(image);
-        JLabel labelImg = new JLabel("");
-        labelImg.setIcon(img);
-        labelImg.setBounds(10, 29, 336, 257);
-        contentPane.add(labelImg);*/
-
         lblNewLabel = new JLabel("");
         ClassLoader a = getClass().getClassLoader();
-        lblNewLabel.setIcon(new ImageIcon(a.getResource("unifor.gif"))); //Imagem inicial da aplicação
+        lblNewLabel.setIcon(new ImageIcon(a.getResource("images/tiozeiros.jpeg"))); //Imagem inicial da aplicação
         lblNewLabel.setBounds(10, 29, 336, 257);
         contentPane.add(lblNewLabel);
 

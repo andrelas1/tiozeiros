@@ -113,7 +113,7 @@ public class JogadoresFrame extends AbstractFrame {
 }
 
 class NivelHabilidades extends JPanel {
-    protected ArrayList<JCheckBox> checkBoxes = new ArrayList<>();
+    protected ArrayList<JRadioButton> checkBoxes = new ArrayList<>();
     protected ArrayList<JLabel> labels = new ArrayList<>();
     protected Integer niveis;
 
@@ -130,7 +130,7 @@ class NivelHabilidades extends JPanel {
         niveis = n;
         checkBoxPanel.setSize(300, 20);
         for (int c = 0; c < n; c++) {
-            JCheckBox box = new JCheckBox();
+            JRadioButton box = new JRadioButton();
             box.setSize(16, 16);
             box.setBackground(new Color(7, 189, 62));
             checkBoxes.add(box);

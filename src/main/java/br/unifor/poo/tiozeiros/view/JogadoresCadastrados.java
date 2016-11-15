@@ -43,6 +43,6 @@ class ListaJogadores extends JPanel {
 
     public ListaJogadores() {
         listaJogadores.setLayout(new GridLayout(30, 2));
-        for()
+        //for()
     }
 }

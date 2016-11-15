@@ -22,8 +22,7 @@ public class EquipeFrame extends AbstractFrame {
         EquipeFrame frame = new EquipeFrame();
         contentPane = gerarContentPane();
 
-        JLabel lblTitulo = new JLabel("Equipes");
-        lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
+        JLabel lblTitulo = gerarTitulo("Equipes");
         lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
         contentPane.add(lblTitulo);
 

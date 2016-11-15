@@ -3,10 +3,7 @@ package br.unifor.poo.tiozeiros;
 import br.unifor.poo.tiozeiros.entity.Equipe;
 import br.unifor.poo.tiozeiros.entity.Jogador;
 import br.unifor.poo.tiozeiros.entity.Partida;
-import br.unifor.poo.tiozeiros.view.EquipeFrame;
-import br.unifor.poo.tiozeiros.view.HomeFrame;
-import br.unifor.poo.tiozeiros.view.JogadoresFrame;
-import br.unifor.poo.tiozeiros.view.LoginFrame;
+import br.unifor.poo.tiozeiros.view.*;
 
 import java.util.Scanner;
 import java.util.Timer;
@@ -24,7 +21,8 @@ public class App {
 */
         /*HomeFrame frame = new HomeFrame();*/
         /*JogadoresFrame frame = new JogadoresFrame();*/
-        EquipeFrame frame = new EquipeFrame();
+        /*EquipeFrame frame = new EquipeFrame();*/
+        JogadoresCadastrados frame = new JogadoresCadastrados();
         frame.createFrame();
     }
 }

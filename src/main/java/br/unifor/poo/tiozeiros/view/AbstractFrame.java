@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.util.Spliterators;
 
 /**
  * Created by andre on 12/11/16.
@@ -85,7 +84,7 @@ public class AbstractFrame extends JFrame {
         return contentPane;
     }
 
-    public JMenuBar gerarMenuBar(){
+    protected JMenuBar gerarMenuBar(){
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(0, 0, 640, 28);
 
@@ -112,6 +111,13 @@ public class AbstractFrame extends JFrame {
         mnHistorico.add(mtmVisualizarHistórico);
 
         return menuBar;
+    }
+
+    protected JLabel gerarTitulo(String titulo){
+        JLabel lblTitulo = new JLabel(titulo);
+        lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
+        lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
+        return lblTitulo;
     }
 
     /*
@@ -160,7 +166,7 @@ public class AbstractFrame extends JFrame {
     */
 
     public AbstractFrame telaRegistroJogador() {
-        JogadorFrame frame = new JogadorFrame();
+        JogadoresCadastrados frame = new JogadoresCadastrados();
         mostrarTela(frame);
         return frame;
     }

@@ -22,6 +22,8 @@ public class HomeFrame extends AbstractFrame {
         HomeFrame frame = new HomeFrame();
         contentPane = gerarContentPane();
 
+        contentPane.add(gerarTitulo("Início"));
+
 
         /**************************************
          BARRA DE MENU

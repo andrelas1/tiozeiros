@@ -21,8 +21,7 @@ public class JogadoresFrame extends AbstractFrame {
         JogadoresFrame frame = new JogadoresFrame();
         contentPane = gerarContentPane();
 
-        JLabel lblTitulo = new JLabel("Cadastro de Novo Jogador");
-        lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
+        JLabel lblTitulo = gerarTitulo("Novo Jogador");
         lblTitulo.setBounds((MAX_WIDTH-310)/2, 20, 330, 60);
         contentPane.add(lblTitulo);
 

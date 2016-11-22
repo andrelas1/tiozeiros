@@ -6,20 +6,20 @@ import java.util.Timer;
 /**
  * Created by andre on 12/11/16.
  */
-public class Partida {
+public class Partidas {
     private Equipe equipe1;
     private Equipe equipe2;
     private String resultado;
     private Timer tempo;
     private Date data;
 
-    public Partida(Equipe equipe1, Equipe equipe2, Timer tempo){
+    public Partidas(Equipe equipe1, Equipe equipe2, Timer tempo){
         this.equipe1 = equipe1;
         this.equipe2 = equipe2;
         this.tempo = tempo;
     }
 
-    public Partida(){
+    public Partidas(){
 
     }
 

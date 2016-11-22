@@ -1,8 +1,13 @@
 package br.unifor.poo.tiozeiros.view;
 
+import br.unifor.poo.tiozeiros.bo.UsuarioBO;
+import br.unifor.poo.tiozeiros.entity.Usuarios;
+import br.unifor.poo.tiozeiros.exception.DAOException;
+import br.unifor.poo.tiozeiros.validators.ValidaEntradas;
+
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by andre on 12/11/16.
@@ -13,8 +18,12 @@ public class LoginFrame extends AbstractFrame {
     private JPasswordField pwField;
     private JLabel lblNewLabel;
     private JButton btnCadastrarManager;
+    private ValidaEntradas validaEntradas = new ValidaEntradas();
+    private UsuarioBO usuarioBO;
 
     public void createFrame() {
+
+        this.usuarioBO = new UsuarioBO();
 
         /**************************************
          JANELA CONTAINER
@@ -53,7 +62,21 @@ public class LoginFrame extends AbstractFrame {
          ***************************************/
 
         JButton btnEntrar = new JButton("Entrar");
-        //setar ActionListener
+        btnEntrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    if(validaEntradas.validarPadraoEmail(txtLogin.getText()) && validaEntradas.validarTamanhoSenha(new String(pwField.getPassword()))){
+                        Usuarios usuario = new Usuarios(txtLogin.getText(), new String(pwField.getPassword()));
+                        try{
+                            if(usuarioBO.)
+                        }catch(DAOException e1){
+                            msgAlerts("erro", e1.getMessage());
+                        }
+
+                    }
+            }
+        });
+
         btnEntrar.setBounds(352, 169, 76, 23);
         btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));
         contentPane.add(btnEntrar);

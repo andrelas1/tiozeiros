@@ -1,112 +1,84 @@
 package br.unifor.poo.tiozeiros.view;
 
-import br.unifor.poo.tiozeiros.bo.UsuarioBO;
-import br.unifor.poo.tiozeiros.entity.Usuarios;
-import br.unifor.poo.tiozeiros.exception.DAOException;
-import br.unifor.poo.tiozeiros.validators.ValidaEntradas;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-/**
- * Created by andre on 12/11/16.
- */
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+
 public class LoginFrame extends AbstractFrame {
+
     private JPanel contentPane;
     private JTextField txtLogin;
-    private JPasswordField pwField;
-    private JLabel lblNewLabel;
-    private JButton btnCadastrarManager;
-    private ValidaEntradas validaEntradas = new ValidaEntradas();
-    private UsuarioBO usuarioBO;
+    private JTextField pwfSenha;
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    LoginFrame frame = new LoginFrame();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-    public void createFrame() {
+    /**
+     * Create the frame.
+     */
+    public LoginFrame() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setBackground(Color.WHITE);
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
 
-        this.usuarioBO = new UsuarioBO();
+        JLabel lblLogin = new JLabel("Login");
+        lblLogin.setBounds(133, 175, 54, 19);
+        contentPane.add(lblLogin);
 
-        /**************************************
-         JANELA CONTAINER
-         ***************************************/
-
-        LoginFrame loginFrame = new LoginFrame();
-        setTitle("Tiozeiros Futebol Clube");
-        /*setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("imagens/unifor.gif")));*/
-        contentPane = gerarContentPane();
-
-        /**************************************
-         CAMPOS DE LOGIN E SENHA
-         ***************************************/
+        JLabel lblSenha = new JLabel("Senha");
+        lblSenha.setBounds(133, 205, 54, 15);
+        contentPane.add(lblSenha);
 
         txtLogin = new JTextField();
-        txtLogin.setBounds(398, 101, 153, 20);
+        txtLogin.setBounds(185, 175, 114, 18);
         contentPane.add(txtLogin);
         txtLogin.setColumns(10);
 
-        JLabel lblLogin = new JLabel("Login:");
-        lblLogin.setFont(lblLogin.getFont().deriveFont(11.0f));
-        lblLogin.setBounds(342, 104, 46, 14);
-        contentPane.add(lblLogin);
+        pwfSenha = new JTextField();
+        pwfSenha.setBounds(185, 205, 114, 19);
+        contentPane.add(pwfSenha);
+        pwfSenha.setColumns(10);
 
-        JLabel lblSenha = new JLabel("Senha:");
-        lblSenha.setBounds(342, 135, 46, 14);
-        lblSenha.setFont(lblSenha.getFont().deriveFont(11.0f));
-        contentPane.add(lblSenha);
 
-        pwField = new JPasswordField();
-        pwField.setBounds(398, 132, 153, 20);
-        contentPane.add(pwField);
-
-        /**************************************
-         ENTRAR E IMAGEM DE INÍCIO
-         ***************************************/
+        JLabel lblImagemPrincipal = new JLabel("");
+        lblImagemPrincipal.setHorizontalAlignment(SwingConstants.CENTER);
+        ClassLoader classLoader = getClass().getClassLoader();
+        lblImagemPrincipal.setIcon(new ImageIcon(classLoader.getResource("images/tiozeiros_r.png")));
+        lblImagemPrincipal.setBounds((450-264)/2, 12, 264, 150);
+        contentPane.add(lblImagemPrincipal);
 
         JButton btnEntrar = new JButton("Entrar");
-        /*btnEntrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    if(validaEntradas.validarPadraoEmail(txtLogin.getText()) && validaEntradas.validarTamanhoSenha(new String(pwField.getPassword()))){
-                        Usuarios usuario = new Usuarios(txtLogin.getText(), new String(pwField.getPassword()));
-                        try{
-                            if(usuarioBO.)
-                        }catch(DAOException e1){
-                            msgAlerts("erro", e1.getMessage());
-                        }
-
-                    }
-            }
-        });*/
-
-        btnEntrar.setBounds(352, 169, 76, 23);
-        btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));
+        btnEntrar.setBounds((450-78)/2, 235, 78, 19);
         contentPane.add(btnEntrar);
-
-        lblNewLabel = new JLabel("");
-        ClassLoader a = getClass().getClassLoader();
-        lblNewLabel.setIcon(new ImageIcon(a.getResource("images/tiozeiros.jpeg"))); //Imagem inicial da aplicação
-        lblNewLabel.setBounds(10, 29, 336, 257);
-        contentPane.add(lblNewLabel);
-
-        /**************************************
-         BOTÃO DE CADASTRAR
-         ***************************************/
-
-        btnCadastrarManager = new JButton("Cadastrar-se");
-        //setar ActionListener
-        btnCadastrarManager.setBounds(438, 169, 101, 23);
-        btnCadastrarManager.setFont(btnCadastrarManager.getFont().deriveFont(11.0f));
-        contentPane.add(btnCadastrarManager);
-        loginFrame.add(contentPane);
-
-        mostrarTela(loginFrame);
-
     }
 
-    private boolean validaCamposObrigatorios() {
-        if (txtLogin.getText().trim().isEmpty() || pwField.getPassword().toString().trim().isEmpty()) {
-            msgAlerts("erro", "Campos Obrigatórios não preenchidos.");
-            return false;
-        }
-        return true;
-    }
+
 }

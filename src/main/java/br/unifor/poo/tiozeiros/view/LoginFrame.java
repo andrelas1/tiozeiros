@@ -62,7 +62,7 @@ public class LoginFrame extends AbstractFrame {
          ***************************************/
 
         JButton btnEntrar = new JButton("Entrar");
-        btnEntrar.addActionListener(new ActionListener() {
+        /*btnEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                     if(validaEntradas.validarPadraoEmail(txtLogin.getText()) && validaEntradas.validarTamanhoSenha(new String(pwField.getPassword()))){
@@ -75,7 +75,7 @@ public class LoginFrame extends AbstractFrame {
 
                     }
             }
-        });
+        });*/
 
         btnEntrar.setBounds(352, 169, 76, 23);
         btnEntrar.setFont(btnEntrar.getFont().deriveFont(11.0f));

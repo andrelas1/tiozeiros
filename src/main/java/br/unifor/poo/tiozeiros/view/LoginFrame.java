@@ -1,26 +1,29 @@
 package br.unifor.poo.tiozeiros.view;
 
+import br.unifor.poo.tiozeiros.entity.Usuarios;
+import br.unifor.poo.tiozeiros.exception.DAOException;
+import br.unifor.poo.tiozeiros.seguranca.Criptografia;
+import br.unifor.poo.tiozeiros.seguranca.SegurancaTO;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
+import javax.swing.text.PasswordView;
+import javax.swing.text.StringContent;
 
 public class LoginFrame extends AbstractFrame {
 
     private JPanel contentPane;
     private JTextField txtLogin;
-    private JTextField pwfSenha;
+    private JPasswordField pwfSenha;
+
     /**
      * Launch the application.
      */
@@ -62,7 +65,7 @@ public class LoginFrame extends AbstractFrame {
         contentPane.add(txtLogin);
         txtLogin.setColumns(10);
 
-        pwfSenha = new JTextField();
+        pwfSenha = new JPasswordField();
         pwfSenha.setBounds(185, 205, 114, 19);
         contentPane.add(pwfSenha);
         pwfSenha.setColumns(10);
@@ -72,13 +75,38 @@ public class LoginFrame extends AbstractFrame {
         lblImagemPrincipal.setHorizontalAlignment(SwingConstants.CENTER);
         ClassLoader classLoader = getClass().getClassLoader();
         lblImagemPrincipal.setIcon(new ImageIcon(classLoader.getResource("images/tiozeiros_r.png")));
-        lblImagemPrincipal.setBounds((450-264)/2, 12, 264, 150);
+        lblImagemPrincipal.setBounds((450 - 264) / 2, 12, 264, 150);
         contentPane.add(lblImagemPrincipal);
 
         JButton btnEntrar = new JButton("Entrar");
-        btnEntrar.setBounds((450-78)/2, 235, 78, 19);
+
+        btnEntrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (validaCamposObrigatorios()){
+                    Usuarios usuario = new Usuarios();
+                    usuario.setLogin(txtLogin.getText());
+                    usuario.setSenha(Criptografia.encripta(String.valueOf(pwfSenha.getPassword())));
+                    try{
+                        if(usuarioBO.logger(usuario)){
+                            home().msgAlerts("info", "Olá" + SegurancaTO.getUsuario().getNome());
+                        }
+                    }catch (DAOException dao){
+                        msgAlerts("erro", dao.getMessage());
+                    }
+                }
+            }
+        });
+        btnEntrar.setBounds((450 - 78) / 2, 235, 78, 19);
         contentPane.add(btnEntrar);
     }
 
+    private boolean validaCamposObrigatorios() {
+        if (txtLogin.getText().trim().isEmpty() || pwfSenha.getPassword().toString().trim().isEmpty()) {
+            msgAlerts("alerta","Campos Obrigatórios não preenchidos.");
+            return false;
+        }
+        return true;
+    }
 
 }

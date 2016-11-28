@@ -6,10 +6,12 @@ package br.unifor.poo.tiozeiros.entity;
 public class Usuarios {
     private String login;
     private String senha;
+    private String nome;
 
-    public Usuarios(String login, String senha){
+    public Usuarios(String nome, String login, String senha){
         this.login = login;
         this.senha = senha;
+        this.nome = nome;
     }
 
     public String getLogin() {
@@ -26,5 +28,9 @@ public class Usuarios {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

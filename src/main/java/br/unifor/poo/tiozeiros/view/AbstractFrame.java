@@ -176,8 +176,6 @@ public class AbstractFrame extends JFrame {
     public AbstractFrame cadUsuario() {
         CadastrarUsuarioFrame frame = new CadastrarUsuarioFrame();
         try {
-            UIManager.setLookAndFeel(
-                    "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             dispose();

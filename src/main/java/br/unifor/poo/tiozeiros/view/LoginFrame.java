@@ -35,6 +35,7 @@ public class LoginFrame extends AbstractFrame {
             public void run() {
                 try {
                     LoginFrame frame = new LoginFrame();
+                    frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

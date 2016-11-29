@@ -11,9 +11,9 @@ CREATE TABLE usuarios(
 CREATE TABLE jogadores(
 	id SERIAL NOT NULL,
 	nome VARCHAR(255) NOT NULL,
-	finalização VARCHAR(11) NOT NULL,
-	velocidade MONEY NOT NULL,
-	passe MONEY NOT NULL,
-	marcação MONEY NOT NULL,
+	chute INT NOT NULL,
+	passe INT NOT NULL,
+	marcacao INT NOT NULL,
+	velocidade INT NOT NULL,
 	CONSTRAINT JOGADORES_ID_PK PRIMARY KEY(id)
 );

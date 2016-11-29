@@ -6,21 +6,21 @@ package br.unifor.poo.tiozeiros.entity;
 public class Jogadores {
 
     private String nome;
-    private Double chute, passe, velocidade, marcação;
+    private int chute, passe, velocidade, marcação, id;
 
-    public void setChute(Double chute) {
-        if (chute >= 0.0 && chute <= 10.0) {
+    public void setChute(Integer chute) {
+        if (chute >= 0 && chute <= 10) {
             this.chute = chute;
         }else{
-            this.chute = 0.0;
+            this.chute = 0;
         }
     }
 
-    public void setMarcação(Double marcação) {
+    public void setMarcação(Integer marcação) {
         if (marcação >= 0.0 && marcação <= 10.0) {
             this.marcação = marcação;
         }else{
-            this.marcação = 0.0;
+            this.marcação = 0;
         }
 
     }
@@ -29,20 +29,20 @@ public class Jogadores {
         this.nome = nome;
     }
 
-    public void setPasse(Double passe) {
-        if (passe >= 0.0 && passe <= 10.0) {
+    public void setPasse(Integer passe) {
+        if (passe >= 0 && passe <= 10) {
             this.passe = passe;
         }else{
-            this.passe = 0.0;
+            this.passe = 0;
         }
 
     }
 
-    public void setVelocidade(Double velocidade) {
-        if (passe >= 0.0 && passe <= 10.0) {
+    public void setVelocidade(Integer velocidade) {
+        if (passe >= 0 && passe <= 10) {
             this.velocidade = velocidade;
         }else{
-            this.velocidade = 0.0;
+            this.velocidade = 0;
         }
     }
 
@@ -50,20 +50,23 @@ public class Jogadores {
         return nome;
     }
 
-    public Double getChute() {
+    public Integer getChute() {
         return this.chute;
     }
 
-    public Double getPasse() {
+    public Integer getPasse() {
         return this.passe;
     }
 
-    public Double getVelocidade() {
+    public Integer getVelocidade() {
         return this.velocidade;
     }
 
-    public Double getMarcação() {
+    public Integer getMarcação() {
         return this.marcação;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

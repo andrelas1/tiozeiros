@@ -1,7 +1,8 @@
 package br.unifor.poo.tiozeiros.view;
 
-import br.unifor.poo.tiozeiros.bo.JogadorBO;
+import br.unifor.poo.tiozeiros.bo.JogadoresBO;
 import br.unifor.poo.tiozeiros.entity.Jogadores;
+import br.unifor.poo.tiozeiros.exception.DAOException;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,7 +42,7 @@ public class CadastrarJogadorFrame extends AbstractFrame {
      */
     public CadastrarJogadorFrame() {
 
-        JogadorBO jogadorBO = new JogadorBO();
+        JogadoresBO jogadoresBO = new JogadoresBO();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -108,9 +109,19 @@ public class CadastrarJogadorFrame extends AbstractFrame {
         btnSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(validaCamposObrigatorios(txtNome.getText(), pnFinalizacao.)){
+                if(validaCamposObrigatorios(txtNome.getText(), pnFinalizacao, pnPasse, pnMarcação, pnVelocidade)){
                     Jogadores jogador = new Jogadores();
                     jogador.setNome(txtNome.getText());
+                    jogador.setChute(pnFinalizacao.getNivel());
+                    jogador.setPasse(pnPasse.getNivel());
+                    jogador.setMarcação(pnMarcação.getNivel());
+                    jogador.setVelocidade(pnVelocidade.getNivel());
+                    try{
+                        jogadoresBO.salvar(jogador);
+                        home().msgInfo("Jogador cadastrado");
+                    }catch (DAOException dao){
+                        msgError(dao.getMessage());
+                    }
                 }
 
 
@@ -120,11 +131,18 @@ public class CadastrarJogadorFrame extends AbstractFrame {
 
         JButton btnCancelar = new JButton("Cancelar");
         btnCancelar.setBounds(255, 243, 110, 19);
+        btnCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                home();
+            }
+        });
         contentPane.add(btnCancelar);
     }
 
-    public Boolean validaCamposObrigatorios(String nome, JRadioButton fin, JRadioButton pas, JRadioButton marc, JRadioButton vel){
-        if(!(nome.trim().isEmpty()) || fin.isSelected() || pas.isSelected() || marc.isSelected() || vel.isSelected()){
+    public Boolean validaCamposObrigatorios(String nome, NivelHabilidades fin, NivelHabilidades pas, NivelHabilidades marc, NivelHabilidades vel){
+
+        if(!(nome.trim().isEmpty()) || fin.getNivel()!=null || pas.getNivel()!=null || marc.getNivel()!=null || vel.getNivel()!=null){
             return true;
         }else{
             msgError("Campos Obrigatórios Não Preenchidos");
@@ -139,6 +157,7 @@ class NivelHabilidades extends JPanel {
     private ArrayList<JLabel> labels = new ArrayList<>();
     private Integer niveis;
     private ButtonGroup group = new ButtonGroup();
+    JPanel checkBoxPanel;
 
 
     public NivelHabilidades() {
@@ -148,7 +167,7 @@ class NivelHabilidades extends JPanel {
     }
 
     public JPanel criarCheckBoxes(int n) {
-        JPanel checkBoxPanel = new JPanel();
+        checkBoxPanel = new JPanel();
         checkBoxPanel.setLayout(new GridLayout(1, 10));
         niveis = n;
         checkBoxPanel.setSize(300, 20);
@@ -182,6 +201,15 @@ class NivelHabilidades extends JPanel {
 
     public ArrayList<JRadioButton> getCheckBoxes() {
         return checkBoxes;
+    }
+
+    public Integer getNivel(){
+        for(int i = 1; i<=10; i++){
+            if(checkBoxes.get(i-1).isSelected()){
+                return i;
+            }
+        }
+        return null;
     }
 }
 

@@ -1,5 +1,9 @@
 package br.unifor.poo.tiozeiros.view;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+
 /**
  * Created by andre on 29/11/16.
  */
@@ -29,7 +33,7 @@ class EquipesGeradas extends JPanel {
             JLabel j2;
             JLabel j3;
             JLabel j4;
-            if (c == 0) {
+            /*if (c == 0) {
                 j1 = new JLabel(new Jogador("AndreL").getNome());
                 j2 = new JLabel(new Jogador("Diogo").getNome());
                 j3 = new JLabel(new Jogador("Daniel").getNome());
@@ -66,7 +70,7 @@ class EquipesGeradas extends JPanel {
             equipe.add(j2);
             equipe.add(j3);
             equipe.add(j4);
-            add(equipe);
+            add(equipe);*/
         }
 
     }

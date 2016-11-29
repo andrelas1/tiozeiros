@@ -58,75 +58,6 @@ public class AbstractFrame extends JFrame {
         });
     }
 
-    public void mostrarTela(JFrame frame) {
-        try {
-            frame.setSize(MAX_WIDTH, MAX_HEIGHT);
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-            dispose();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    protected JPanel gerarContentPane() {
-
-        JPanel contentPane = new JPanel();
-        setTitle("Tiozeiros Futebol Clube");
-        setBounds(100, 100, 577, 349);
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setBackground(backgroundColor);
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
-        messages = new JLabel("");
-        messages.setBounds(10, 45, MAX_WIDTH, 14);
-        contentPane.add(messages);
-
-        return contentPane;
-    }
-
-    protected JMenuBar gerarMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBounds(0, 0, 640, 28);
-
-        JMenu mnEquipes = new JMenu("Equipe");
-        menuBar.add(mnEquipes);
-        JMenuItem mtmEscolherEquipes = new JMenuItem("Escolher Equipes");
-        /*
-        Inserir ActionListener para escolha de equipes
-        */
-        mnEquipes.add(mtmEscolherEquipes);
-        JMenu mnJogador = new JMenu("Jogador");
-        menuBar.add(mnJogador);
-        JMenuItem mtmCadastrarJogador = new JMenuItem("Cadastrar Jogador");
-        /*
-        Inserir ActionListener para cadastro de jogador
-        */
-        mnJogador.add(mtmCadastrarJogador);
-        JMenu mnHistorico = new JMenu("Histórico");
-        menuBar.add(mnHistorico);
-        JMenuItem mtmVisualizarHistórico = new JMenuItem("Visualizar Histórico");
-        /*
-        Inserir ActionListener para visualizar histórico
-        */
-        mnHistorico.add(mtmVisualizarHistórico);
-
-        return menuBar;
-    }
-
-    protected JLabel gerarTitulo(String titulo) {
-        JLabel lblTitulo = new JLabel(titulo);
-        lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
-        lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
-        return lblTitulo;
-    }
-
-    /*
-    *Tela de início da aplicação
-    * funcionalidades na tela: iniciar partida, registrar gol, terminar partida.
-    */
-
     public AbstractFrame home() {
         HomeFrame frame = new HomeFrame();
         try {
@@ -139,45 +70,6 @@ public class AbstractFrame extends JFrame {
         return frame;
     }
 
-    /*
-    *Tela de geração das equipes
-    * o usuario tera a opção de escolher o número de equipes
-    * para gerar as equipes.
-    * Após isso, o usuário é levado para a tela de escolha de jogadores
-    *
-    */
-
-    public AbstractFrame telaGerarEquipe() {
-        EquipeFrame frame = new EquipeFrame();
-        mostrarTela(frame);
-        return frame;
-    }
-
-    /*
-    *Tela de escolha dos jogadores cadastrados
-    * O usuário deverá escolher o número de jogadores de acordo
-    * com a quantidade de equipes escolhida.
-    * Para cada equipe escolhida, são necessários quatro jogadores.
-    * A tela terá a funcionalidade de registrar novo jogador.
-    */
-
-    public AbstractFrame telaEscolhaJogadores() {
-        JogadoresFrame frame = new JogadoresFrame();
-        mostrarTela(frame);
-        return frame;
-    }
-
-    /*
-    *Tela de registro do jogador
-    * o usuário terá que informar
-    * o nome, chute, passe, velocidade e marcação.
-    */
-
-    public AbstractFrame telaRegistroJogador() {
-        JogadoresCadastrados frame = new JogadoresCadastrados();
-        mostrarTela(frame);
-        return frame;
-    }
 
     protected AbstractFrame cadUsuario() {
         CadastrarUsuarioFrame frame = new CadastrarUsuarioFrame();
@@ -193,6 +85,18 @@ public class AbstractFrame extends JFrame {
 
     protected AbstractFrame login() {
         LoginFrame frame = new LoginFrame();
+        try {
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return frame;
+    }
+
+    protected AbstractFrame cadJogador() {
+        CadastrarJogadorFrame frame = new CadastrarJogadorFrame();
         try {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);

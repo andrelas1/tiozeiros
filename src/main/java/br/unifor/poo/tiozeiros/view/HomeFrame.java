@@ -3,11 +3,10 @@ package br.unifor.poo.tiozeiros.view;
 import br.unifor.poo.tiozeiros.entity.Equipe;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 
 /**
@@ -48,10 +47,33 @@ public class HomeFrame extends AbstractFrame{
         messages.setBounds(5, 260, 300, 14);
         contentPane.add(messages);
 
-        JLabel lblNewLabel = new JLabel("Logado com Sucesso!!");
-        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel.setBounds(116, 77, 207, 70);
-        contentPane.add(lblNewLabel);
+        JButton btnCadastrarJogador = new JButton("Cadastrar Jogadores");
+        btnCadastrarJogador.setBounds(138, 37, 170, 25);
+        btnCadastrarJogador.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                cadJogador();
+            }
+        });
+        contentPane.add(btnCadastrarJogador);
+
+        JButton btnGerarEquipes = new JButton("Gerar Equipes");
+        btnGerarEquipes.setBounds(138, 90, 170, 25);
+        contentPane.add(btnGerarEquipes);
+
+        JButton btnIniciarPartida = new JButton("Iniciar Partida");
+        btnIniciarPartida.setBounds(138, 139, 170, 25);
+        contentPane.add(btnIniciarPartida);
+
+        JButton btnSair = new JButton("Sair");
+        btnSair.setBounds(138, 188, 170, 25);
+        btnSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                login();
+            }
+        });
+        contentPane.add(btnSair);
     }
 }
 

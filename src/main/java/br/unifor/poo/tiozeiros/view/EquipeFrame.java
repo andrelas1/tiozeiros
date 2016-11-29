@@ -1,51 +1,9 @@
 package br.unifor.poo.tiozeiros.view;
 
-import br.unifor.poo.tiozeiros.entity.Jogador;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-
 /**
- * Created by andre on 12/11/16.
+ * Created by andre on 29/11/16.
  */
-public class EquipeFrame extends AbstractFrame {
-
-    private JPanel contentPane;
-
-    public void createFrame() {
-
-        /**************************************
-         CONTAINER
-         ***************************************/
-
-        EquipeFrame frame = new EquipeFrame();
-        contentPane = gerarContentPane();
-
-        JLabel lblTitulo = gerarTitulo("Equipes");
-        lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
-        contentPane.add(lblTitulo);
-
-        /**************************************
-         BARRA DE MENU
-         ***************************************/
-
-        contentPane.add(gerarMenuBar());
-
-
-        /**************************************
-         TELA DE EQUIPES: MÁXIMO QUATRO EQUIPES
-         ***************************************/
-
-        EquipesGeradas equipes = new EquipesGeradas();
-        equipes.setBounds(80, (int) lblTitulo.getBounds().getY()+60, 480, 320);
-        contentPane.add(equipes);
-
-        frame.add(contentPane);
-        mostrarTela(frame);
-
-    }
-
+public class EquipeFrame {
 }
 
 class EquipesGeradas extends JPanel {

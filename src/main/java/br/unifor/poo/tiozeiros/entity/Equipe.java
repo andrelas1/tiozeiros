@@ -9,7 +9,7 @@ import java.util.List;
 public class Equipe {
 
     private final Integer quantidadeJogadores = 4;
-    private List<Jogador> jogadores = new ArrayList<Jogador>();
+    private List<Jogadores> jogadores = new ArrayList<Jogadores>();
     private Integer vitórias, derrotas, empates;
 
     public void setDerrotas(Integer derrotas) {
@@ -24,12 +24,12 @@ public class Equipe {
         this.vitórias = vitórias;
     }
 
-    public void addJogador(Jogador jogador) {
+    /*public void addJogador(Jogadores jogadores) {
         if (jogadores.size() < 5) {
-            this.jogadores.add(jogador);
+            this.jogadores.add(jogadores);
         }
 
-    }
+    }*/
 
     public Integer getDerrotas() {
         return this.derrotas;
@@ -43,7 +43,7 @@ public class Equipe {
         return this.empates;
     }
 
-    public List<Jogador> getJogadores() {
+    public List<Jogadores> getJogadores() {
         return this.jogadores;
     }
 

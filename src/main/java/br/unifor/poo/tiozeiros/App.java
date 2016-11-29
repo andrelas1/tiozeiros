@@ -8,13 +8,6 @@ import br.unifor.poo.tiozeiros.view.*;
 public class App {
 
     public static void main(String[] args) {
-        /*LoginFrame frame = new LoginFrame();
-        frame.createFrame();
-*/
-        /*HomeFrame frame = new HomeFrame();*/
-        /*JogadoresFrame frame = new JogadoresFrame();*/
-        EquipeFrame frame = new EquipeFrame();
-        /*JogadoresCadastrados frame = new JogadoresCadastrados();*/
-        frame.createFrame();
+
     }
 }

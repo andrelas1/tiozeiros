@@ -7,11 +7,16 @@ public class Usuarios {
     private String login;
     private String senha;
     private String nome;
+    private int id;
 
     public Usuarios(String nome, String login, String senha){
         this.login = login;
         this.senha = senha;
         this.nome = nome;
+    }
+
+    public Usuarios(){
+
     }
 
     public String getLogin() {
@@ -32,5 +37,13 @@ public class Usuarios {
 
     public String getNome() {
         return nome;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

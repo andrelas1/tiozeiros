@@ -18,26 +18,28 @@ public class AbstractFrame extends JFrame {
     protected Font titleFont = new Font("Serif", Font.BOLD, 14);
     protected Font paragraphFont = new Font("Serif", Font.PLAIN, 12);
     protected int x = (MAX_WIDTH - 380) / 2;
-    protected int y = ((MAX_HEIGHT - 150) / 2)-80;
+    protected int y = ((MAX_HEIGHT - 150) / 2) - 80;
 
     /*
     * Mensagens padrão de informação, alerta e erro
     * que todas telas poderão ter
     * */
 
-    public void msgAlerts(String tipo, String msg) {
+    public void msgInfo(String msg) {
         messages.setText(msg);
-        switch (tipo) {
-            case "info":
-                messages.setForeground(Color.BLUE);
-                break;
-            case "alerta":
-                messages.setForeground(Color.YELLOW);
-                break;
-            case "erro":
-                messages.setForeground(Color.RED);
-                break;
-        }
+        messages.setForeground(Color.BLUE);
+        repaint();
+    }
+
+    public void msgWarn(String msg) {
+        messages.setText(msg);
+        messages.setForeground(Color.YELLOW);
+        repaint();
+    }
+
+    public void msgError(String msg) {
+        messages.setText(msg);
+        messages.setForeground(Color.RED);
         repaint();
     }
 
@@ -68,7 +70,7 @@ public class AbstractFrame extends JFrame {
         }
     }
 
-    protected JPanel gerarContentPane(){
+    protected JPanel gerarContentPane() {
 
         JPanel contentPane = new JPanel();
         setTitle("Tiozeiros Futebol Clube");
@@ -84,7 +86,7 @@ public class AbstractFrame extends JFrame {
         return contentPane;
     }
 
-    protected JMenuBar gerarMenuBar(){
+    protected JMenuBar gerarMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBounds(0, 0, 640, 28);
 
@@ -113,7 +115,7 @@ public class AbstractFrame extends JFrame {
         return menuBar;
     }
 
-    protected JLabel gerarTitulo(String titulo){
+    protected JLabel gerarTitulo(String titulo) {
         JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setFont(new Font("Serif", Font.BOLD, 22));
         lblTitulo.setBounds((MAX_WIDTH - 120) / 2, 20, 120, 60);
@@ -168,6 +170,20 @@ public class AbstractFrame extends JFrame {
     public AbstractFrame telaRegistroJogador() {
         JogadoresCadastrados frame = new JogadoresCadastrados();
         mostrarTela(frame);
+        return frame;
+    }
+
+    public AbstractFrame cadUsuario() {
+        CadastrarUsuarioFrame frame = new CadastrarUsuarioFrame();
+        try {
+            UIManager.setLookAndFeel(
+                    "com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return frame;
     }
 

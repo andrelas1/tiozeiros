@@ -129,7 +129,13 @@ public class AbstractFrame extends JFrame {
 
     public AbstractFrame home() {
         HomeFrame frame = new HomeFrame();
-        mostrarTela(frame);
+        try {
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return frame;
     }
 
@@ -173,7 +179,7 @@ public class AbstractFrame extends JFrame {
         return frame;
     }
 
-    public AbstractFrame cadUsuario() {
+    protected AbstractFrame cadUsuario() {
         CadastrarUsuarioFrame frame = new CadastrarUsuarioFrame();
         try {
             frame.setLocationRelativeTo(null);
@@ -183,6 +189,37 @@ public class AbstractFrame extends JFrame {
             ex.printStackTrace();
         }
         return frame;
+    }
+
+    protected AbstractFrame login() {
+        LoginFrame frame = new LoginFrame();
+        try {
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return frame;
+    }
+
+    protected boolean validaCamposObrigatorios(JTextField txtLogin, JPasswordField pwfSenha) {
+        if (txtLogin.getText().trim().isEmpty() || pwfSenha.getPassword().toString().trim().isEmpty()) {
+            msgWarn("Campos Obrigatórios não preenchidos.");
+            return false;
+        }
+        return true;
+    }
+
+    protected boolean validaCamposObrigatorios(JTextField txtEmail, JTextField txtSenha, JTextField txtNome) {
+        if (txtEmail.getText().trim().isEmpty() || txtSenha.getText().trim().isEmpty() || txtNome.getText().trim().isEmpty()) {
+
+            msgWarn("Campos Obrigatórios não preenchidos.");
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
 

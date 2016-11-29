@@ -60,6 +60,7 @@ public class LoginFrame extends AbstractFrame {
         messages.setBounds(5, 260, 300, 14);
         contentPane.add(messages);
 
+
         JLabel lblLogin = new JLabel("Login");
         lblLogin.setFont(new Font("SansSerif", Font.BOLD, 12));
         lblLogin.setBounds(133, 175, 54, 19);
@@ -95,7 +96,7 @@ public class LoginFrame extends AbstractFrame {
         btnEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (validaCamposObrigatorios()){
+                if (validaCamposObrigatorios(txtLogin, pwfSenha)){
                     Usuarios usuario = new Usuarios();
                     usuario.setLogin(txtLogin.getText());
                     usuario.setSenha(Criptografia.encripta(String.valueOf(pwfSenha.getPassword())));
@@ -126,12 +127,6 @@ public class LoginFrame extends AbstractFrame {
 
     }
 
-    private boolean validaCamposObrigatorios() {
-        if (txtLogin.getText().trim().isEmpty() || pwfSenha.getPassword().toString().trim().isEmpty()) {
-            msgWarn("Campos Obrigatórios não preenchidos.");
-            return false;
-        }
-        return true;
-    }
+
 
 }

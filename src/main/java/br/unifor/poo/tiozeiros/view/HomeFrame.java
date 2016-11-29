@@ -2,131 +2,57 @@ package br.unifor.poo.tiozeiros.view;
 
 import br.unifor.poo.tiozeiros.entity.Equipe;
 
-import javax.swing.*;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 
 /**
  * Created by andre on 12/11/16.
  */
-public class HomeFrame extends AbstractFrame {
+
+public class HomeFrame extends AbstractFrame{
 
     private JPanel contentPane;
 
-
-    public void createFrame() {
-
-        /**************************************
-         JANELA CONTAINER
-         ***************************************/
-        HomeFrame frame = new HomeFrame();
-        contentPane = gerarContentPane();
-
-        contentPane.add(gerarTitulo("Início"));
-
-
-        /**************************************
-         BARRA DE MENU
-         ***************************************/
-
-        contentPane.add(gerarMenuBar());
-
-        /**************************************
-         TIMER
-         ***************************************/
-
-        TimerPane timer = new TimerPane();
-        int x = (MAX_WIDTH - 380) / 2;
-        int y = (MAX_HEIGHT - 150) / 2;
-        timer.setBounds(x, y, 380, 150);
-        contentPane.add(timer);
-
-        /**************************************
-         BOTÕES DE INICIAR E PAUSAR
-         ***************************************/
-
-        JButton btnIniciar = new JButton("Iniciar");
-        JButton btnPausar = new JButton("Pausar");
-
-
-        btnIniciar.setBounds(x, y - 60, 100, 28);
-        /*
-        Inserir ActionListener do botão
-        */
-        contentPane.add(btnIniciar);
-
-        btnPausar.setBounds(410, y - 60, 100, 28);
-        /*
-        Inserir ActionListener do botão
-        */
-        contentPane.add(btnPausar);
-
-        /**************************************
-         PLACAR E OPÇÃO DE FINALIZAR
-         ***************************************/
-        EquipePane equipe1 = new EquipePane("Time 1");
-        EquipePane equipe2 = new EquipePane("Time 2");
-        equipe1.setBounds(x + 50, y + 170, 100, 28);
-        equipe2.setBounds(360, y + 170, 100, 28);
-        equipe1.setBackground(Color.WHITE);
-        contentPane.add(equipe1);
-        contentPane.add(equipe2);
-
-        JLabel placar1 = new JLabel("0");
-        JLabel separadorPlacar = new JLabel("x");
-        JLabel placar2 = new JLabel("0");
-
-        placar1.setBounds(x + 50 + 100 + 15, y + 170, 28, 28);
-        contentPane.add(placar1);
-        separadorPlacar.setBounds((int) placar1.getBounds().getX() + 20, (int) placar1.getBounds().getY(), 28, 28);
-        contentPane.add(separadorPlacar);
-        placar2.setBounds((int) separadorPlacar.getBounds().getX() + 20, (int) separadorPlacar.getBounds().getY(), 28, 28);
-        contentPane.add(placar2);
-
-        JButton btnFinalizar = new JButton("Finalizar");
-        btnFinalizar.setBounds((MAX_WIDTH-120)/2, (int) separadorPlacar.getBounds().getY()+60, 120, 40);
-        contentPane.add(btnFinalizar);
-
-        frame.add(contentPane);
-
-        mostrarTela(frame);
-
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    HomeFrame frame = new HomeFrame();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
-}
+    /**
+     * Create the frame.
+     */
+    public HomeFrame() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        messages = new JLabel("");
+        messages.setBounds(5, 260, 300, 14);
+        contentPane.add(messages);
 
-class TimerPane extends JPanel {
-
-    Font clockFont = new Font("Tahoma", Font.PLAIN, 102);
-
-    private JLabel minutos;
-    private JLabel segundos;
-
-
-    public TimerPane() {
-        setLayout(new GridBagLayout());
-        minutos = new JLabel("00");
-        minutos.setFont(clockFont);
-        segundos = new JLabel("00");
-        segundos.setFont(clockFont);
-        JLabel separador = new JLabel(":");
-        separador.setFont(clockFont);
-
-        add(minutos);
-        add(separador);
-        add(segundos);
-
-    }
-
-}
-
-class EquipePane extends JPanel {
-    private JLabel nomeEquipe;
-
-    public EquipePane(String nome) {
-        nomeEquipe = new JLabel(nome);
-        setLayout(new GridBagLayout());
-        add(nomeEquipe);
+        JLabel lblNewLabel = new JLabel("Logado com Sucesso!!");
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setBounds(116, 77, 207, 70);
+        contentPane.add(lblNewLabel);
     }
 }
+
 

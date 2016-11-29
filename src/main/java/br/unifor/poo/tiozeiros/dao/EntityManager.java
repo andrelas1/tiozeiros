@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.log4j.*;
+import org.apache.log4j.Logger;
 
 /**
  * Created by andre on 22/11/16.
@@ -15,7 +15,7 @@ import org.apache.log4j.*;
 public abstract class EntityManager {
     private Logger logger = Logger.getLogger(EntityManager.class);
 
-    public void execute(String sql, Object... params) throws DAOException{ //método para guardar os objetos no preparedStatement e atualizar a tabela do banco de dados
+    public void execute(String sql, Object... params) throws DAOException{
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -31,7 +31,7 @@ public abstract class EntityManager {
         }catch (SQLException e){
             String msg = "Não foi possível " + this.getTipoOperacao(sql)
                     + ", tente mais tarde.";
-            logger.error(msg, e);
+            //logger.error(msg, e);
             throw new DAOException(msg, e);
         }finally {
             this.close(connection, preparedStatement);
@@ -59,7 +59,7 @@ public abstract class EntityManager {
             }
         } catch (SQLException e) {
             String msg = "Não foi possível realizar a consulta.";
-            logger.error(msg);
+            //logger.error(msg);
             throw new DAOException(msg, e);
         } finally {
             close(conn, pstm, resultSet);
@@ -90,14 +90,14 @@ public abstract class EntityManager {
                 pstm.close();
             }
         } catch (SQLException e) {
-            logger.warn("Não foi possível fechar o preparedStatemant", e);
+            //logger.warn("Não foi possível fechar o preparedStatemant", e);
         } finally {
             try {
                 if (conn != null && !conn.isClosed()) {
                     conn.close();
                 }
             } catch (SQLException e) {
-                logger.warn("Não foi possível encerrar a conexão", e);
+                //logger.warn("Não foi possível encerrar a conexão", e);
             }
         }
     }
@@ -108,21 +108,21 @@ public abstract class EntityManager {
                 rs.close();
             }
         } catch (SQLException e) {
-            logger.warn("Não foi possível fechar o resultset", e);
+            //logger.warn("Não foi possível fechar o resultset", e);
         } finally {
             try {
                 if (pstm != null && !pstm.isClosed()) {
                     pstm.close();
                 }
             } catch (SQLException e) {
-                logger.warn("Não foi possível fechar o preparedStatemant", e);
+                //logger.warn("Não foi possível fechar o preparedStatemant", e);
             } finally {
                 try {
                     if (conn != null && !conn.isClosed()) {
                         conn.close();
                     }
                 } catch (SQLException e) {
-                    logger.warn("Não foi possível encerrar a conexão", e);
+                   // logger.warn("Não foi possível encerrar a conexão", e);
                 }
             }
         }

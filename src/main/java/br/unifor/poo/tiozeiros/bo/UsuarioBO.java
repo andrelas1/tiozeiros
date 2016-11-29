@@ -11,7 +11,7 @@ import br.unifor.poo.tiozeiros.dao.UsuarioDAO;
  */
 public class UsuarioBO {
 
-    private Logger logger = Logger.getLogger(UsuarioBO.class);
+    //private Logger logger = Logger.getLogger(UsuarioBO.class);
     private UsuarioDAO usuarioDAO;
 
     public UsuarioBO(){
@@ -22,7 +22,7 @@ public class UsuarioBO {
         try{
             this.usuarioDAO.salvar(usuario);
         }catch (DAOException dao){
-            logger.error(dao.getMessage(), dao);
+            //logger.error(dao.getMessage(), dao);
             throw dao;
         }
     }
@@ -37,7 +37,7 @@ public class UsuarioBO {
                 throw new DAOException("Login ou Senha inválidos");
             }
         }catch (DAOException dao){
-            logger.error(dao.getMessage(), dao);
+            //logger.error(dao.getMessage(), dao);
             throw dao;
         }
         return user != null;

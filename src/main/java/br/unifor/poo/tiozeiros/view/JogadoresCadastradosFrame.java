@@ -3,11 +3,14 @@ package br.unifor.poo.tiozeiros.view;
 
 import br.unifor.poo.tiozeiros.bo.JogadoresBO;
 import br.unifor.poo.tiozeiros.entity.Jogadores;
+import br.unifor.poo.tiozeiros.exception.DAOException;
 
 import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -68,16 +71,44 @@ public class JogadoresCadastradosFrame extends AbstractFrame {
 
 
         JButton btnDeletar = new JButton("Deletar");
-        btnDeletar.setBounds(131, 350, 117, 25);
+        btnDeletar.setBounds(72, 354, 117, 25);
+        btnDeletar.addActionListener(new ActionListener() {
+            int jogadoresRemovidos = 0;
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                for(JCheckBox jcb : checkBoxesJogadores){
+                    if(jcb.isSelected()){
+                        String[] split = jcb.getText().split("\\s+");
+                        try {
+                            jogadoresBO.deletarPorNome(split[0]);
+                            jogadoresRemovidos++;
+                        } catch (DAOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                home().msgInfo("Foram removidos " + jogadoresRemovidos + " registros");
+            }
+        });
         contentPane.add(btnDeletar);
 
         JButton btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(305, 350, 117, 25);
+        btnVoltar.setBounds(221, 354, 117, 25);
+        btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                home();
+            }
+        });
         contentPane.add(btnVoltar);
+
+        JButton btnGerarEquipes = new JButton("Gerar Equipes");
+        btnGerarEquipes.setBounds(370, 354, 117, 25);
+        contentPane.add(btnGerarEquipes);
     }
 
     private void listarJogadores() {
-        ArrayList<Object> jogadores = new ArrayList<>();
+        ArrayList<Object> jogadores;
         Jogadores jogador;
         try {
             jogadores = jogadoresBO.listarJogadores();

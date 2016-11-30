@@ -34,4 +34,11 @@ public class JogadoresBO {
         return listaJogadores;
     }
 
+    public void deletarPorNome(String nome) throws DAOException{
+        try{
+            this.jogadoresDAO.deletarPorNome(nome);
+        }catch (DAOException dao){
+            throw dao;
+        }
+    }
 }

@@ -42,4 +42,8 @@ public class JogadoresDAO {
         listaJogadores = em.getResultList("select * from jogadores ORDER BY ID");
         return listaJogadores;
     }
+
+    public void deletarPorNome(String nome) throws DAOException{
+        em.execute("delete from jogadores where nome = ?", nome);
+    }
 }

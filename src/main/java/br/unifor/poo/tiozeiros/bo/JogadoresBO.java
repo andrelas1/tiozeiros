@@ -41,4 +41,23 @@ public class JogadoresBO {
             throw dao;
         }
     }
+
+    public Jogadores buscarPorNome(String s) throws DAOException{
+        Jogadores jogador;
+        try{
+            jogador = this.jogadoresDAO.buscarPorNome(s);
+        }catch (DAOException dao){
+            throw dao;
+        }
+        return jogador;
+    }
+
+    public void atualizar(Jogadores jogador) throws DAOException{
+        try{
+            this.jogadoresDAO.atualizar(jogador);
+        }catch (DAOException dao){
+            throw dao;
+        }
+
+    }
 }

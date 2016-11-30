@@ -18,7 +18,14 @@ import javax.swing.border.EmptyBorder;
 public class CadastrarJogadorFrame extends AbstractFrame {
 
     private JPanel contentPane;
-    private JTextField txtNome;
+    protected JTextField txtNome;
+    protected JLabel lblCadastrarNovoJogador;
+    protected NivelHabilidades pnFinalizacao;
+    protected NivelHabilidades pnPasse;
+    protected NivelHabilidades pnMarcação;
+    protected NivelHabilidades pnVelocidade;
+    protected JButton btnSalvar;
+    protected JogadoresBO jogadoresBO;
 
 
     /**
@@ -42,7 +49,7 @@ public class CadastrarJogadorFrame extends AbstractFrame {
      */
     public CadastrarJogadorFrame() {
 
-        JogadoresBO jogadoresBO = new JogadoresBO();
+        jogadoresBO = new JogadoresBO();
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -54,7 +61,7 @@ public class CadastrarJogadorFrame extends AbstractFrame {
         messages.setBounds(5, 260, 300, 14);
         contentPane.add(messages);
 
-        JLabel lblCadastrarNovoJogador = new JLabel("Cadastrar Novo Jogadores");
+        lblCadastrarNovoJogador = new JLabel("Cadastrar Novo Jogadores");
         lblCadastrarNovoJogador.setBounds(163, 16, 183, 15);
         contentPane.add(lblCadastrarNovoJogador);
 
@@ -88,23 +95,23 @@ public class CadastrarJogadorFrame extends AbstractFrame {
         contentPane.add(txtNome);
         txtNome.setColumns(10);
 
-        NivelHabilidades pnFinalizacao = new NivelHabilidades();
+        pnFinalizacao = new NivelHabilidades();
         pnFinalizacao.setBounds(163, 102, 250, 25);
         contentPane.add(pnFinalizacao);
 
-        NivelHabilidades pnPasse = new NivelHabilidades();
+        pnPasse = new NivelHabilidades();
         pnPasse.setBounds(163, 134, 250, 25);
         contentPane.add(pnPasse);
 
-        NivelHabilidades pnMarcação = new NivelHabilidades();
+        pnMarcação = new NivelHabilidades();
         pnMarcação.setBounds(163, 171, 250, 25);
         contentPane.add(pnMarcação);
 
-        NivelHabilidades pnVelocidade = new NivelHabilidades();
+        pnVelocidade = new NivelHabilidades();
         pnVelocidade.setBounds(163, 208, 250, 25);
         contentPane.add(pnVelocidade);
 
-        JButton btnSalvar = new JButton("Salvar");
+        btnSalvar = new JButton("Salvar");
         btnSalvar.setBounds(124, 243, 110, 19);
         btnSalvar.addActionListener(new ActionListener() {
             @Override
@@ -210,6 +217,15 @@ class NivelHabilidades extends JPanel {
             }
         }
         return null;
+    }
+
+    public void setNivel(int nivel){
+         for(int i = 0; i<10; i++){
+             if(i == nivel){
+                 checkBoxes.get(i).setSelected(true);
+                 return;
+             }
+         }
     }
 }
 

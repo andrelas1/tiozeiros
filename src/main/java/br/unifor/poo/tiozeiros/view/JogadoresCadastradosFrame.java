@@ -23,7 +23,7 @@ import java.util.Objects;
 public class JogadoresCadastradosFrame extends AbstractFrame {
 
     private JPanel contentPane;
-    JogadoresBO jogadoresBO;
+    protected JogadoresBO jogadoresBO;
     private JPanel panel;
     private ArrayList<JCheckBox> checkBoxesJogadores = new ArrayList<>();
 
@@ -71,13 +71,14 @@ public class JogadoresCadastradosFrame extends AbstractFrame {
 
 
         JButton btnDeletar = new JButton("Deletar");
-        btnDeletar.setBounds(72, 354, 117, 25);
+        btnDeletar.setBounds(159, 354, 117, 25);
         btnDeletar.addActionListener(new ActionListener() {
             int jogadoresRemovidos = 0;
+
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                for(JCheckBox jcb : checkBoxesJogadores){
-                    if(jcb.isSelected()){
+                for (JCheckBox jcb : checkBoxesJogadores) {
+                    if (jcb.isSelected()) {
                         String[] split = jcb.getText().split("\\s+");
                         try {
                             jogadoresBO.deletarPorNome(split[0]);
@@ -93,7 +94,7 @@ public class JogadoresCadastradosFrame extends AbstractFrame {
         contentPane.add(btnDeletar);
 
         JButton btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(221, 354, 117, 25);
+        btnVoltar.setBounds(298, 354, 117, 25);
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -102,8 +103,37 @@ public class JogadoresCadastradosFrame extends AbstractFrame {
         });
         contentPane.add(btnVoltar);
 
+        JButton btnEditar = new JButton("Editar");
+        btnEditar.setBounds(12, 354, 117, 25);
+        btnEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Jogadores jogador;
+                int jogadoresSelecionados = 0;
+                JCheckBox jogadorEditar = null;
+                for (JCheckBox jcb : checkBoxesJogadores) {
+                    if (jcb.isSelected()) {
+                        jogadoresSelecionados++;
+                        jogadorEditar = jcb;
+                    }
+                }
+                if (jogadorEditar!=null && jogadoresSelecionados == 1) {
+                    String[] split = jogadorEditar.getText().split("\\s+");
+                    try {
+                        jogador = jogadoresBO.buscarPorNome(split[0]);
+                        editarJogador(jogador);
+                    } catch (DAOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    home().msgError("Não é possível editar mais de um jogador de uma vez");
+                }
+            }
+        });
+        contentPane.add(btnEditar);
+
         JButton btnGerarEquipes = new JButton("Gerar Equipes");
-        btnGerarEquipes.setBounds(370, 354, 117, 25);
+        btnGerarEquipes.setBounds(434, 354, 117, 25);
         contentPane.add(btnGerarEquipes);
     }
 
@@ -112,7 +142,7 @@ public class JogadoresCadastradosFrame extends AbstractFrame {
         Jogadores jogador;
         try {
             jogadores = jogadoresBO.listarJogadores();
-            for(Object obj : jogadores){
+            for (Object obj : jogadores) {
                 jogador = (Jogadores) obj;
                 JCheckBox j = new JCheckBox(jogador.getNome() + " " + Double.toString(jogador.calcularMedia()));
                 panel.add(j);

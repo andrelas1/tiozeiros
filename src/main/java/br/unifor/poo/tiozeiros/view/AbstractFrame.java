@@ -1,5 +1,7 @@
 package br.unifor.poo.tiozeiros.view;
 
+import br.unifor.poo.tiozeiros.entity.Jogadores;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -97,6 +99,18 @@ public class AbstractFrame extends JFrame {
 
     protected AbstractFrame listarJogadoresCadastrados() {
         JogadoresCadastradosFrame frame = new JogadoresCadastradosFrame();
+        try {
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return frame;
+    }
+
+    protected AbstractFrame editarJogador(Jogadores jogador) {
+        EditarJogadorFrame frame = new EditarJogadorFrame(jogador);
         try {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);

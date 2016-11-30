@@ -46,4 +46,15 @@ public class JogadoresDAO {
     public void deletarPorNome(String nome) throws DAOException{
         em.execute("delete from jogadores where nome = ?", nome);
     }
+
+    public Jogadores buscarPorNome(String s) throws DAOException{
+        Jogadores jogador;
+        jogador = (Jogadores) em.getSingleResult("select * from jogadores where nome = ?", s);
+        return jogador;
+    }
+
+    public void atualizar(Jogadores jogador) throws DAOException{
+        em.execute("update jogadores set chute = ?, passe = ? WHERE nome = ? ",
+                jogador.getChute(), jogador.getPasse(), jogador.getNome());
+    }
 }

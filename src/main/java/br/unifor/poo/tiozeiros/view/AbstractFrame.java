@@ -95,6 +95,18 @@ public class AbstractFrame extends JFrame {
         return frame;
     }
 
+    protected AbstractFrame listarJogadoresCadastrados() {
+        JogadoresCadastradosFrame frame = new JogadoresCadastradosFrame();
+        try {
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+            dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return frame;
+    }
+
     protected AbstractFrame cadJogador() {
         CadastrarJogadorFrame frame = new CadastrarJogadorFrame();
         try {

@@ -69,4 +69,8 @@ public class Jogadores {
     public void setId(int id) {
         this.id = id;
     }
+
+    public Double calcularMedia(){
+        return (chute+velocidade+passe+marcação)/4.0;
+    }
 }

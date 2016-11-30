@@ -65,8 +65,18 @@ public class HomeFrame extends AbstractFrame{
         btnIniciarPartida.setBounds(138, 139, 170, 25);
         contentPane.add(btnIniciarPartida);
 
+        JButton btnListarJogadores = new JButton("Listar Jogadores Cadastrados");
+        btnListarJogadores.setBounds(138, 180, 170, 25);
+        btnListarJogadores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                listarJogadoresCadastrados();
+            }
+        });
+        contentPane.add(btnListarJogadores);
+
         JButton btnSair = new JButton("Sair");
-        btnSair.setBounds(138, 188, 170, 25);
+        btnSair.setBounds(138, 220, 170, 25);
         btnSair.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {

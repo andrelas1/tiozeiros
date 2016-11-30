@@ -2,10 +2,9 @@ package br.unifor.poo.tiozeiros.dao;
 
 import br.unifor.poo.tiozeiros.exception.DAOException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -36,6 +35,34 @@ public abstract class EntityManager {
         }finally {
             this.close(connection, preparedStatement);
         }
+    }
+
+    public ArrayList<Object> getResultList(String sql, Object... params)
+            throws SQLException {
+
+        ArrayList<Object> objetos = new ArrayList<>();
+        ResultSet resultSet = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try {
+            conn = ConnectionFactory.getConnection();
+            pstm = conn.prepareStatement(sql);
+
+            for (int i = 1; i <= params.length; i++) {
+                pstm.setObject(i, params[i - 1]);
+            }
+
+            resultSet = pstm.executeQuery();
+            while (resultSet.next()) {
+                objetos.add(trataResultSet(resultSet));
+            }
+        } finally {
+            close(conn, pstm, resultSet);
+        }
+
+        return objetos;
+
     }
 
     public Object getSingleResult(String sql, Object... params)

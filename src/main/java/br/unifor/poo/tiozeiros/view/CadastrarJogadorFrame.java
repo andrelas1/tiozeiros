@@ -220,9 +220,9 @@ class NivelHabilidades extends JPanel {
     }
 
     public void setNivel(int nivel){
-         for(int i = 0; i<10; i++){
+         for(int i = 1; i<10; i++){
              if(i == nivel){
-                 checkBoxes.get(i).setSelected(true);
+                 checkBoxes.get(i-1).setSelected(true);
                  return;
              }
          }

@@ -54,7 +54,7 @@ public class JogadoresDAO {
     }
 
     public void atualizar(Jogadores jogador) throws DAOException{
-        em.execute("update jogadores set chute = ?, passe = ? WHERE nome = ? ",
-                jogador.getChute(), jogador.getPasse(), jogador.getNome());
+        em.execute("update jogadores set chute = ?, passe = ?, marcacao = ?, velocidade = ? WHERE nome = ? ",
+                jogador.getChute(), jogador.getPasse(), jogador.getMarcação(), jogador.getVelocidade(), jogador.getNome());
     }
 }

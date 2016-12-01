@@ -7,6 +7,18 @@ public class Jogadores {
 
     private String nome;
     private int chute, passe, velocidade, marcação, id;
+    private Double media;
+
+    public Jogadores(){
+
+    }
+
+    public Jogadores(Double media){
+        chute = 11;
+        passe = 11;
+        velocidade = 11;
+        marcação = 11;
+    }
 
     public void setChute(Integer chute) {
         if (chute >= 0 && chute <= 10) {
@@ -72,5 +84,9 @@ public class Jogadores {
 
     public Double calcularMedia(){
         return (chute+velocidade+passe+marcação)/4.0;
+    }
+
+    public void setMedia(Double media){
+        this.media = media;
     }
 }

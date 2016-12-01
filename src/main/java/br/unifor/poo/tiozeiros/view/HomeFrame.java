@@ -62,7 +62,7 @@ public class HomeFrame extends AbstractFrame{
         btnGerarEquipes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                gerarEquipes();
             }
         });
         contentPane.add(btnGerarEquipes);

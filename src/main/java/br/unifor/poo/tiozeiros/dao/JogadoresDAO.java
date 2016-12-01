@@ -37,7 +37,7 @@ public class JogadoresDAO {
                 jogador.getNome(), jogador.getChute(), jogador.getPasse(), jogador.getMarcação(), jogador.getVelocidade());
     }
 
-    public ArrayList<Object> buscarJogadorCadastrado() throws SQLException{
+    public ArrayList<Object> buscarJogadoresCadastrados() throws SQLException{
         ArrayList<Object> listaJogadores;
         listaJogadores = em.getResultList("select * from jogadores ORDER BY ID");
         return listaJogadores;
